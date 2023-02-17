@@ -14,8 +14,8 @@ phases:
   build:
     commands:
       - echo Deploying with Serverless Framework
-      - sls deploy -v -s $ENV_NAME
-      - sls syncToS3 -s $ENV_NAME
+      - sls deploy -v -s dev
+      - sls syncToS3 -s dev
   post_build:
     commands:
       - echo Deployment completed on `date`
