@@ -1,10 +1,13 @@
 service: mth-spa
 
 plugins:
-  - serverless-single-page-app-plugin
+  - serverless-s3-sync
 
 custom:
   s3Bucket: mth-spa
+  s3Sync:
+    - bucketName: ${self:custom.s3Bucket}
+      localDir: app/dist
 
 provider:
   name: aws
@@ -31,9 +34,9 @@ resources:
           Statement:
             - Sid: PublicReadGetObject
               Effect: Allow
-              Principal: "*"
+              Principal: '*'
               Action:
-              - s3:GetObject
+                - s3:GetObject
               Resource: arn:aws:s3:::${self:custom.s3Bucket}/*
     ## Specifying the CloudFront Distribution to server your Web Application
     WebAppCloudFrontDistribution:
@@ -93,4 +96,4 @@ resources:
   Outputs:
     WebAppCloudFrontDistributionOutput:
       Value:
-        'Fn::GetAtt': [ WebAppCloudFrontDistribution, DomainName ]
+        'Fn::GetAtt': [WebAppCloudFrontDistribution, DomainName]

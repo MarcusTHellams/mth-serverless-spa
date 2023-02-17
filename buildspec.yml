@@ -17,7 +17,6 @@ phases:
     commands:
       - echo Deploying with Serverless Framework
       - sls deploy -v -s dev
-      - aws S3 sync app/dist/ s3://mth-spa/
   post_build:
     commands:
       - echo Deployment completed on `date`
