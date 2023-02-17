@@ -1,0 +1,16 @@
+{
+  "name": "mth-serverless-spa",
+  "author": "Marcus Hellams",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "app"
+  ],
+  "scripts": {
+    "build": "yarn --cwd app build"
+  },
+  "dependencies": {
+    "serverless": "^3.27.0",
+    "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
+  }
+}
