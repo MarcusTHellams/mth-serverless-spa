@@ -7,6 +7,8 @@ phases:
     commands:
       - echo Installing Serverless...
       - yarn global add serverless
+      - echo Installing Serverless...
+      - yarn global add aws-cli
   pre_build:
     commands:
       - yarn
@@ -15,7 +17,7 @@ phases:
     commands:
       - echo Deploying with Serverless Framework
       - sls deploy -v -s dev
-      - sls syncToS3 -s dev
+      - sls syncToS3
   post_build:
     commands:
       - echo Deployment completed on `date`
