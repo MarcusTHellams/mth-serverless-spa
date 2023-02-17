@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "serverless": "^3.27.0",
-    "serverless-s3-sync": "^3.1.0",
-    "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
+    "serverless-s3-sync": "^3.1.0"
   }
 }
