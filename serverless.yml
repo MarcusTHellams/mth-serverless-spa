@@ -8,6 +8,11 @@ custom:
   s3Sync:
     - bucketName: ${self:custom.s3Bucket}
       localDir: app/dist
+      params:
+        - index.html:
+            CacheControl: 'no-cache'
+        - "*.js":
+            CacheControl: 'no-cache'
 
 provider:
   name: aws
