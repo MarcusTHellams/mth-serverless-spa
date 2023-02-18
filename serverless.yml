@@ -2,6 +2,7 @@ service: mth-spa
 
 plugins:
   - serverless-s3-sync
+  - serverless-cloudfront-invalidate
 
 custom:
   s3Bucket: mth-spa
@@ -11,8 +12,12 @@ custom:
       params:
         - index.html:
             CacheControl: 'no-cache'
-        - "*.js":
+        - '*.js':
             CacheControl: 'no-cache'
+  cloudfrontInvalidate:
+    - distributionId: E3IRFW6GS1CE7F
+      items: # one or more paths required
+        - "/app/dist/*"
 
 provider:
   name: aws
@@ -79,6 +84,8 @@ resources:
               - PATCH
               - POST
               - PUT
+            CachedMethods:
+              - null
             ## The origin id defined above
             TargetOriginId: WebApp
             ## Defining if and how the QueryString and Cookies are forwarded to the origin which in this case is S3
